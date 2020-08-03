@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div class="container">
     <Estadistica />
   </div>
 </template>
@@ -10,9 +10,9 @@ import Estadistica from './components/Estadistica.vue'
 export default {
   name: 'App',
   components: {
-    Estadistica
+    Estadistica,
   }
-}
+}     
 </script>
 
 <style>
