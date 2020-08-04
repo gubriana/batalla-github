@@ -2,15 +2,15 @@
   <div>
     <div class="col s6 m6">
       <div class="card hoverable">
-        <div class="center-align">
-          <input v-model="githubUserName" type="text" placeholder="Escribe el nombre de tu usuario"/>
+        <div class="card-content">
+          <i class="material-icons prefix grey-text">account_circle</i><input v-model="githubUserName" type="text" placeholder="Escribe el nombre de tu usuario"/>
           <br><br>
-          <button class="waves-effect waves-light btn" @click="sendUser">Ingresar usuario</button>
+          <button class="waves-effect waves-light btn-block btn red" @click="sendUser">Ingresar usuario</button>
           <br><br>
         </div>
         <div class="divider"></div>
         <div class="card-content">
-          <span class="card-title">Git hub de: {{userName}}</span>
+          <span class="card-title center-align">{{userName}}</span>
         </div>
         <div class="card-action">
           <p>Public Repositories: {{repositories}}</p>
