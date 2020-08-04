@@ -1,6 +1,15 @@
 <template>
   <div class="container">
-    <Estadistica />
+    <h3 class="center-align">Batalla de GITHUB</h3>
+    <div class="row">
+      <div class="col s12 m12">
+        <Estadistica esta="1"/>
+        <Estadistica esta="2"/>
+        <div class="center-align block col s12 m12">
+          <button class="waves-effect waves-light btn-large btn-block">Fight</button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -10,7 +19,7 @@ import Estadistica from './components/Estadistica.vue'
 export default {
   name: 'App',
   components: {
-    Estadistica,
+    Estadistica
   }
 }     
 </script>

@@ -1,36 +1,37 @@
 <template>
-    <div class="row">
-      <div class="col s4 m4">
-        <div class="card">
-          <div>
-            <input v-model="githubUserName" type="text" placeholder="Escribe el nombre de tu usuario"/>
-            <button class="waves-effect waves-light btn" @click="sendUser">Ingresar usuario</button>
-          </div>
-          <div class="card-content">
-            <span class="card-title">Git hub de: {{userName}}</span>
-          </div>
-          <div class="card-action">
-            <p>Public Repositories: {{repositories}}</p>
-            <p>Numbre of Followers: {{numFollowers}}</p>
-            <p>Number Following: {{numFollowing}}</p>
-            <p>Public Gists: {{gists}}</p>
-            <p>Total Score: {{totalScore}}</p>
-          </div>
+  <div>
+    <div class="col s6 m6">
+      <div class="card hoverable">
+        <div class="center-align">
+          <input v-model="githubUserName" type="text" placeholder="Escribe el nombre de tu usuario"/>
+          <br><br>
+          <button class="waves-effect waves-light btn" @click="sendUser">Ingresar usuario</button>
+          <br><br>
         </div>
-      </div>
-      <div class="col s2 m8">
-        <div class="card">
-          <div class="card-content">
-            <img v-for="(seguidor,i) in imgFollowers" :key="i" :src="seguidor.avatar_url" alt="" >
-          </div>
+        <div class="divider"></div>
+        <div class="card-content">
+          <span class="card-title">Git hub de: {{userName}}</span>
+        </div>
+        <div class="card-action">
+          <p>Public Repositories: {{repositories}}</p>
+          <p>Numbre of Followers: {{numFollowers}}</p>
+          <p>Number Following: {{numFollowing}}</p>
+          <p>Public Gists: {{gists}}</p>
+          <p>Total Score: {{totalScore}}</p>
+        </div>
+        <div class="card-content">
+          <img v-for="(seguidor,i) in imgFollowers" :key="i" :src="seguidor.avatar_url" alt="" >
         </div>
       </div>
     </div>
+  </div>
 </template>
-
 <script>
 export default {
   name: 'Estadistica',
+  props: {
+    esta: String
+  },
   data() {
     return {
       userName: '',
@@ -54,6 +55,11 @@ export default {
         this.numFollowing = user.following;
         this.gists = user.public_gists;
         this.totalScore = this.repositories + this.numFollowers + this.gists;
+        if (this.esta == '1'){
+          this.$store.commit('cambiarPuntaje1',this.totalScore)
+        } else {
+          this.$store.commit('cambiarPuntaje2', this.totalScore)
+        }
       })
       .catch((error) => {
         alert(error);
